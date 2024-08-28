@@ -18,3 +18,8 @@ public class Movie
 		return id;
 	}
 	
+	
+	public void setid(int id) {
+		id = id;
+	}
+	
