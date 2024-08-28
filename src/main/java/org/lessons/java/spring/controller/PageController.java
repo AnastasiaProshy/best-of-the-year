@@ -26,23 +26,60 @@ public class PageController
 		
 	
 	
+	
 	@GetMapping("/movies")
-	public String getBestMovies( Model model )
+//	public String getBestMovies( Model model )
+//	{		
+//		List<Movie> bestMovies = getBestMoviesList();			// Get the list of top movies
+//		model.addAttribute("bestMovies", bestMovies);			// the name corresponds to the html file		
+//		return "movies";
+//	}
+		
+	public String movieTitles( Model model )
 	{		
-		List<Movie> bestMovies = getBestMoviesList();			// Get the list of top movies
-		model.addAttribute("bestMovies", bestMovies);			// the name corresponds to the html file		
+		model.addAttribute("title", "Best movies list");			
+		
+		String bestMovies = " " ;
+		
+		for (Movie movie : getBestMoviesList())
+		{
+			bestMovies += movie.getTitle() + " - ";
+		}
+		
+		model.addAttribute("list", bestMovies);
+		
 		return "movies";
 	}
-		
+	
+	
+	
 	
 	
 	@GetMapping("/songs")
-	public String getBestSongs( Model model )
-	{
-		List<Song> bestSongs = getBestSongsList();					// Retrieve the top songs list
-		model.addAttribute("bestSongs", bestSongs);				// the name corresponds to the html file
+//	public String getBestSongs( Model model )
+//	{
+//		List<Song> bestSongs = getBestSongsList();					// Retrieve the top songs list
+//		model.addAttribute("bestSongs", bestSongs);				// the name corresponds to the html file
+//		return "songs";
+//	}
+	
+	
+	public String songTitles( Model model )
+	{		
+		model.addAttribute("title", "Best songs list");			
+		
+		String bestSongs = " " ;
+		
+		for (Song movie : getBestSongsList())
+		{
+			bestSongs += movie.getTitle() + " - ";
+		}
+		
+		model.addAttribute("list", bestSongs);
+		
 		return "songs";
 	}
+	
 	
 		
 	
