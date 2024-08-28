@@ -13,3 +13,8 @@ public class Movie
 		this.title = title;
 	}
 	
+	
+	public int getid() {
+		return id;
+	}
+	
