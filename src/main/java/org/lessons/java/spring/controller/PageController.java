@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.lessons.java.spring.model.Movie;
+import org.lessons.java.spring.model.Song;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,6 +35,15 @@ public class PageController
 	}
 		
 	
+	
+	@GetMapping("/songs")
+	public String getBestSongs( Model model )
+	{
+		List<Song> bestSongs = getBestSongsList();					// Retrieve the top songs list
+		model.addAttribute("bestSongs", bestSongs);				// the name corresponds to the html file
+		return "songs";
+	}
+	
 		
 	
 	private List<Movie> getBestMoviesList()
@@ -48,4 +58,19 @@ public class PageController
 		return bestMovies;
 	}
 	
+	
+	
+	private List<Song> getBestSongsList()
+	{
+		List<Song> bestSongs = new ArrayList<>();			// Create a list of songs
+		bestSongs.add(new Song(12345, "Pink"));					// Add song to list
+		bestSongs.add(new Song(12346, "Love you"));
+		bestSongs.add(new Song(12347, "Not bed"));
+		bestSongs.add(new Song(12348, "Come to me"));
+		bestSongs.add(new Song(12349, "Radio"));
+		bestSongs.add(new Song(12350, "So good"));
+		return bestSongs;
+	}	
+	
+}
 	
