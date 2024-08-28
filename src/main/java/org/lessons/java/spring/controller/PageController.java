@@ -1,5 +1,9 @@
 package org.lessons.java.spring.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.lessons.java.spring.model.Movie;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,3 +22,30 @@ public class PageController
 		model.addAttribute("name", "Nasty");
 		return "homepage";
 	}
+		
+	
+	
+	@GetMapping("/movies")
+	public String getBestMovies( Model model )
+	{		
+		List<Movie> bestMovies = getBestMoviesList();			// Get the list of top movies
+		model.addAttribute("bestMovies", bestMovies);			// the name corresponds to the html file		
+		return "movies";
+	}
+		
+	
+		
+	
+	private List<Movie> getBestMoviesList()
+	{
+		List<Movie> bestMovies= new ArrayList<>();				// Create a movie list
+		bestMovies.add(new Movie(123465, "Smith"));				// Add movie to list
+		bestMovies.add(new Movie(123466, "Via della Rose"));
+		bestMovies.add(new Movie(123467, "UBL Notions"));				// Add movie to list
+		bestMovies.add(new Movie(123468, "This is us"));
+		bestMovies.add(new Movie(123469, "WIll"));				// Add movie to list
+		bestMovies.add(new Movie(123470, "My lovely Oppa"));
+		return bestMovies;
+	}
+	
+	
