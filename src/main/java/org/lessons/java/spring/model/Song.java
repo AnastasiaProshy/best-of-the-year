@@ -20,7 +20,7 @@ public class Song
 	
 	
 	public void setid(int id) {
-		id = id;
+		this.id = id;
 	}
 	
 	
