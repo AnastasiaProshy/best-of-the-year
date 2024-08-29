@@ -8,6 +8,7 @@ import org.lessons.java.spring.model.Song;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
@@ -54,6 +55,27 @@ public class PageController
 	
 	
 	
+	@GetMapping("/movies/{id}")
+	public String movieDetails( Model model, @PathVariable("id") Integer movieId )
+	{		
+		model.addAttribute("title", "Single Movie Detail");			
+		
+		String movieTitle = null ;
+		
+		for (Movie movie : getBestMoviesList())
+		{
+			if(movieId.equals(movie.getid()))
+			{
+				movieTitle = movie.getTitle();
+				break;
+			}
+		}
+		
+		model.addAttribute("name", movieTitle);
+		
+		return "details";
+	}
+	
 	
 	@GetMapping("/songs")
 //	public String getBestSongs( Model model )
@@ -64,15 +86,16 @@ public class PageController
 //	}
 	
 	
+	@GetMapping("/songs")
 	public String songTitles( Model model )
 	{		
 		model.addAttribute("title", "Best songs list");			
 		
 		String bestSongs = " " ;
 		
-		for (Song movie : getBestSongsList())
+		for (Song song : getBestSongsList())
 		{
-			bestSongs += movie.getTitle() + " - ";
+			bestSongs += song.getTitle() + " - ";
 		}
 		
 		model.addAttribute("list", bestSongs);
@@ -81,7 +104,31 @@ public class PageController
 	}
 	
 	
+	
+	
+	@GetMapping("/songs/{id}")
+	public String songDetails ( Model model, @PathVariable("id") Integer songId )
+	{		
+		model.addAttribute("title", "Single Songs Detail");			
 		
+		String songTitle = null ;
+		
+		for (Song song : getBestSongsList())
+		{
+			if(songId.equals(song.getid()))
+			{
+				songTitle = song.getTitle();
+				break;
+			}
+		}
+		
+		model.addAttribute("name", songTitle);
+		
+		return "details";
+	} 	
+	
+	
+	
 	
 	private List<Movie> getBestMoviesList()
 	{
