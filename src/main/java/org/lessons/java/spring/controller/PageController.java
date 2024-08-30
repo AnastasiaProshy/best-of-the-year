@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class PageController 
 {
 	
-	@GetMapping("/")		// just "/" instead of /homepage making the home page the root of my domain
+	@GetMapping("/")			// just "/" instead of /homepage making the home page the root of my domain
 	public String homepage( Model model )
 	{
 		model.addAttribute("name", "Nasty");
@@ -34,16 +34,16 @@ public class PageController
 		
 		String bestMovies = " " ;
 		
-		for (Movie movie : getBestMoviesList())
+		for (Movie movies : getBestMoviesList())
 		{
-			bestMovies += movie.getTitle() + " - ";
+			bestMovies += movies.getTitle() + " -- ";
 		}
 		
 		model.addAttribute("list", bestMovies);
 		
-		return "movies";
+		return "titles";
 	}
-	
+
 	
 	
 	
@@ -54,16 +54,16 @@ public class PageController
 		
 		String movieTitle = null ;
 		
-		for (Movie movie : getBestMoviesList())
+		for (Movie movies : getBestMoviesList())
 		{
-			if(movieId.equals(movie.getid()))
+			if(movieId.equals(movies.getId()))
 			{
-				movieTitle = movie.getTitle();
+				movieTitle = movies.getTitle();
 				break;
 			}
 		}
 		
-		model.addAttribute("name", movieTitle);
+		model.addAttribute ("name", movieTitle);
 		
 		return "details";
 	}
@@ -74,18 +74,18 @@ public class PageController
 	@GetMapping("/songs")
 	public String songTitles( Model model )
 	{		
-		model.addAttribute("title", "Best songs list");			
+		model.addAttribute("title", "Best songs list");		
 		
 		String bestSongs = " " ;
 		
-		for (Song song : getBestSongsList())
+		for (Song songs : getBestSongsList())
 		{
-			bestSongs += song.getTitle() + " - ";
+			bestSongs += songs.getTitle() + " - ";
 		}
 		
 		model.addAttribute("list", bestSongs);
 		
-		return "songs";
+		return "titles";
 	}
 	
 	
@@ -98,11 +98,11 @@ public class PageController
 		
 		String songTitle = null ;
 		
-		for (Song song : getBestSongsList())
+		for (Song songs : getBestSongsList())
 		{
-			if(songId.equals(song.getid()))
+			if(songId.equals(songs.getId()))
 			{
-				songTitle = song.getTitle();
+				songTitle = songs.getTitle();
 				break;
 			}
 		}
@@ -117,14 +117,14 @@ public class PageController
 	
 	private List<Movie> getBestMoviesList()
 	{
-		List<Movie> bestMovies= new ArrayList<>();				// Create a movie list
-		bestMovies.add(new Movie(1, "Smith"));				// Add movie to list
-		bestMovies.add(new Movie(2, "Via della Rose"));
-		bestMovies.add(new Movie(3, "UBL Notions"));				// Add movie to list
-		bestMovies.add(new Movie(4, "This is us"));
-		bestMovies.add(new Movie(5, "WIll"));				// Add movie to list
-		bestMovies.add(new Movie(6, "My lovely Oppa"));
-		return bestMovies;
+		List<Movie> movies= new ArrayList<Movie>();				// Create a movie list
+		movies.add(new Movie(1, "Smith"));								// Add movie to list
+		movies.add(new Movie(2, "Via della Rose"));
+		movies.add(new Movie(3, "UBL Notions"));				
+		movies.add(new Movie(4, "This is us"));
+		movies.add(new Movie(5, "WIll"));				
+		movies.add(new Movie(6, "My lovely Oppa"));
+		return movies;
 	}
 	
 	
@@ -132,14 +132,14 @@ public class PageController
 	
 	private List<Song> getBestSongsList()
 	{
-		List<Song> bestSongs = new ArrayList<>();			// Create a list of songs
-		bestSongs.add(new Song(1, "Pink"));					// Add song to list
-		bestSongs.add(new Song(2, "Love you"));
-		bestSongs.add(new Song(3, "Not bed"));
-		bestSongs.add(new Song(4, "Come to me"));
-		bestSongs.add(new Song(5, "Radio"));
-		bestSongs.add(new Song(6, "So good"));
-		return bestSongs;
+		List<Song> songs = new ArrayList<Song>();			// Create a list of songs
+		songs.add(new Song(1, "Pink"));								// Add song to list
+		songs.add(new Song(2, "Love you"));
+		songs.add(new Song(3, "Not bed"));
+		songs.add(new Song(4, "Come to me"));
+		songs.add(new Song(5, "Radio"));
+		songs.add(new Song(6, "So good"));
+		return songs;
 	}	
 	
 }

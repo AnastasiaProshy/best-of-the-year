@@ -3,29 +3,29 @@ package org.lessons.java.spring.model;
 public class Movie 
 {
 	
-	private int id;
+	private Integer id;			 // Using Integer instead of int allows null values
 	private String title;
 	
 	
-	public Movie (int id, String title)
+	public Movie (Integer id, String title)
 	{
 		this.id = id;
 		this.title = title;
 	}
 	
 	
-	public int getid() {
-		return id;
+	public int getId() {
+		return this.id;
 	}
 	
 	
-	public void setid(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	
 	
 	public String getTitle() {
-		return title;
+		return this.title;
 	}
 	
 	
