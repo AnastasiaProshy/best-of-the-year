@@ -1,33 +1,67 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-	<head>
-		<title>[[ ${title} ]]</title>
-		
-		<!-- Bootstrap CSS -->
-		<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}"/>
-		
-	</head>
-	<body>
-		<header class="bg-secondary-subtle border border-secondary">
-			<div class="container-fluid">
-				<div class="row p-3">				
-					<div class="col-2 py-1">Best of</div>
-					<div class="col-10 d-grid gap-2 d-md-flex">
-						<button type="button" class="col-2 btn btn-outline-secondary btn-sm p-2">Movies</button>						
-						<button type="button" class="col-2 btn btn-outline-secondary btn-sm p-2">Songs</button>	
+	<!DOCTYPE HTML>
+	<html xmlns:th="http://www.thymeleaf.org">
+		<head>
+			<title>[[ ${title} ]]</title>
+			
+			<!-- Bootstrap CSS -->
+			<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}"/>
+			
+		</head>
+		<body>
+			<header class="bg-secondary-subtle border border-secondary">
+				<div class="container-fluid">
+					<div class="row p-3">			
+							
+						<div class="col-2 py-1">Best of</div>
+						<div class="col-10 d-grid gap-2 d-md-flex">		
+												
+							<!-- Home Link -->
+							<a  href="#"								
+								class="col-2 btn btn-outline-secondary btn-sm p-2 text-body text-decoration-none"															
+								th:href="@{/}"
+								th:text="'Home'">										
+							</a>	
+							<!-- Movies Link -->
+							<a  href="#"								
+								class="col-2 btn btn-outline-secondary btn-sm p-2 text-body text-decoration-none"															
+								th:href="@{/movies}"
+								th:text="'Movies'">										
+							</a>	
+							<!-- Songs Link -->
+							<a  href="#"								
+								class="col-2 btn btn-outline-secondary btn-sm p-2 text-body text-decoration-none"															
+								th:href="@{/songs}"
+								th:text="'Songs'">										
+							</a>
+						</div>					
 					</div>					
-				</div>					
-			</div>			
-		</header>
-		<main class="col-8 mx-auto py-5">
-			
-			<div class="row text-center">
-				<h2 th:text="${title}"></h2>
-			</div>
-			
-			<div class="row py-3">				
-				<p th:text="${list}"></p>		
-			</div>			
-		</main>	
-	</body>
-</html>
+				</div>			
+			</header>
+			<main >				
+				<div class="col-8 mx-auto py-5 text-center">
+					
+					<div class="bg-primary-subtle rounded p-2">
+						<h2 th:text="${title}"></h2>
+					</div>
+					
+					<div class="py-4 bg-light">	
+						<div th:each="oneof: ${element}">
+							
+							<a th:if="${type} == 'movie'" 
+							th:href="@{/movies/{id}(id=${oneof.id})}" 
+							class="list-group-item">
+					            <p th:text="${oneof.title}"></p>
+					        </a>
+							
+					        <a th:if="${type} == 'song'" 
+							th:href="@{/songs/{id}(id=${oneof.id})}" 
+							class="list-group-item">
+					            <p th:text="${oneof.title}"></p>
+					        </a> 
+							
+						</div>					
+					</div>						
+				</div>				
+			</main>	
+		</body>
+	</html>

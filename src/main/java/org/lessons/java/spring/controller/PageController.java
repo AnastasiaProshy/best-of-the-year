@@ -20,26 +20,42 @@ public class PageController
 	@GetMapping("/")			// just "/" instead of /homepage making the home page the root of my domain
 	public String homepage( Model model )
 	{
-		model.addAttribute("name", "Nasty");
+		model.addAttribute("name", "Proshy");
 		return "homepage";
 	}
 		
 	
 	
 	
+//	@GetMapping("/movies")	
+//	public String movieTitles( Model model )
+//	{		
+//		model.addAttribute("title", "Best movies list");			
+//		
+//		String bestMovies = " " ;
+//		
+//		for (Movie movies : getBestMoviesList())
+//		{
+//			bestMovies += movies.getTitle() + " -- ";
+//		}
+//		
+//		model.addAttribute("list", bestMovies);
+//		
+//		return "titles";
+//	}
+	
+	
+	
 	@GetMapping("/movies")	
 	public String movieTitles( Model model )
-	{		
-		model.addAttribute("title", "Best movies list");			
+	{	
+		List<Movie> movies = getBestMoviesList();
 		
-		String bestMovies = " " ;
+		model.addAttribute("title", "Best movies list");		
 		
-		for (Movie movies : getBestMoviesList())
-		{
-			bestMovies += movies.getTitle() + " -- ";
-		}
+		model.addAttribute("element", movies);
 		
-		model.addAttribute("list", bestMovies);
+		model.addAttribute("type", "movie");
 		
 		return "titles";
 	}
@@ -71,19 +87,35 @@ public class PageController
 	
 	
 	
-	@GetMapping("/songs")
-	public String songTitles( Model model )
-	{		
+//	@GetMapping("/songs")
+//	public String songTitles( Model model )
+//	{		
+//		model.addAttribute("title", "Best songs list");		
+//		
+//		String bestSongs = " " ;
+//		
+//		for (Song songs : getBestSongsList())
+//		{
+//			bestSongs += songs.getTitle() + " - ";
+//		}
+//		
+//		model.addAttribute("list", bestSongs);
+//		
+//		return "titles";
+//	}
+	
+	
+	
+	@GetMapping("/songs")	
+	public String songsTitles( Model model )
+	{	
+		List<Song> songs = getBestSongsList();
+		
 		model.addAttribute("title", "Best songs list");		
 		
-		String bestSongs = " " ;
+		model.addAttribute("element", songs);
 		
-		for (Song songs : getBestSongsList())
-		{
-			bestSongs += songs.getTitle() + " - ";
-		}
-		
-		model.addAttribute("list", bestSongs);
+		model.addAttribute("type", "song"); 
 		
 		return "titles";
 	}
@@ -117,7 +149,7 @@ public class PageController
 	
 	private List<Movie> getBestMoviesList()
 	{
-		List<Movie> movies= new ArrayList<Movie>();				// Create a movie list
+		List<Movie> movies = new ArrayList<Movie>();				// Create a movie list
 		movies.add(new Movie(1, "Smith"));								// Add movie to list
 		movies.add(new Movie(2, "Via della Rose"));
 		movies.add(new Movie(3, "UBL Notions"));				

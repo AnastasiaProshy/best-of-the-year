@@ -8,9 +8,40 @@
 		
 	</head>
 	<body>
-		<div>
-			<h2 th:text="${title}"></h2>			
-			<p th:text="${name}"></p>
-		</div>
+		<header class="bg-secondary-subtle border border-secondary">
+			<div class="container-fluid">
+				<div class="row p-3">				
+					<div class="col-2 py-1">Best of</div>
+					<div class="col-10 d-grid gap-2 d-md-flex">							
+						<!-- Home Link -->
+						<a  href="#"								
+							class="col-2 btn btn-outline-secondary btn-sm p-2 text-body text-decoration-none"															
+							th:href="@{/}"
+							th:text="'Home'">										
+						</a>	
+						<!-- Movies Link -->
+						<a  href="#"								
+							class="col-2 btn btn-outline-secondary btn-sm p-2 text-body text-decoration-none"															
+							th:href="@{/movies}"
+							th:text="'Movies'">										
+						</a>	
+						<!-- Songs Link -->
+						<a  href="#"								
+							class="col-2 btn btn-outline-secondary btn-sm p-2 text-body text-decoration-none"															
+							th:href="@{/songs}"
+							th:text="'Songs'">										
+						</a>
+					</div>					
+				</div>					
+			</div>			
+		</header>
+		<main class="col-8 mx-auto py-5 text-center">
+			<div class="bg-primary-subtle rounded">
+				<h2 class=" p-3 bg-light"
+				th:text="${title}"></h2>			
+				<p class="p-2"
+				th:text="${name}"></p>
+			</div>
+		</main>
 	</body>
 </html>
