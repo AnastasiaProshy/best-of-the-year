@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<!-- Fictitious tag -->
+		<th:block th:fragment="head"  >
+		<title>[[${title}]]</title>	
+				<!-- Bootstrap CSS -->
+				<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}"/>	
+		</th:block>>
+	</head>
+	<body>
+		<header th:fragment="header"
+		class="bg-secondary-subtle border border-secondary">
+			<div class="container-fluid">
+				<div class="row p-3">				
+					<div class="col-2 py-1">Best of</div>
+					<div class="col-10 d-grid gap-2 d-md-flex">							
+						<!-- Home Link -->
+						<a  href="#"								
+							class="col-2 btn btn-outline-secondary btn-sm p-2 text-body text-decoration-none"															
+							th:href="@{/}"
+							th:text="'Home'">										
+						</a>	
+						<!-- Movies Link -->
+						<a  href="#"								
+							class="col-2 btn btn-outline-secondary btn-sm p-2 text-body text-decoration-none"															
+							th:href="@{/movies}"
+							th:text="'Movies'">										
+						</a>	
+						<!-- Songs Link -->
+						<a  href="#"								
+							class="col-2 btn btn-outline-secondary btn-sm p-2 text-body text-decoration-none"															
+							th:href="@{/songs}"
+							th:text="'Songs'">										
+						</a>
+					</div>					
+				</div>					
+			</div>			
+		</header>
+	</body>
+</html>

@@ -1,41 +1,8 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-	<head>
-		<title>Homepage</title>
-		
-		<!-- Bootstrap CSS -->
-		<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}"/>
-		
-	</head>
-	
+	<head th:insert="fragments :: head"></head>
 	<body>
-		<header class="bg-secondary-subtle border border-secondary">
-			<div class="container-fluid">
-				<div class="row p-3">				
-					<div class="col-2 py-1">Best of</div>
-					<div class="col-10 d-grid gap-2 d-md-flex">							
-						<!-- Home Link -->
-						<a  href="#"								
-							class="col-2 btn btn-outline-secondary btn-sm p-2 text-body text-decoration-none"															
-							th:href="@{/}"
-							th:text="'Home'">										
-						</a>	
-						<!-- Movies Link -->
-						<a  href="#"								
-							class="col-2 btn btn-outline-secondary btn-sm p-2 text-body text-decoration-none"															
-							th:href="@{/movies}"
-							th:text="'Movies'">										
-						</a>	
-						<!-- Songs Link -->
-						<a  href="#"								
-							class="col-2 btn btn-outline-secondary btn-sm p-2 text-body text-decoration-none"															
-							th:href="@{/songs}"
-							th:text="'Songs'">										
-						</a>
-					</div>					
-				</div>					
-			</div>			
-		</header>		
+		<header th:insert="fragments :: header"></header>		
 		<main class="col-8 mx-auto py-5">
 			<div class="row text-center">				
 				<h1 th:text="'Best of the year by ' + ${name} + '!'"></h1>				
@@ -43,7 +10,7 @@
 			<div class="row py-3">
 				
 				<div class="card">
-				  <img src="..." class="card-img-top" alt="...">
+				  <img src="/img/shoot.jpg" class="card-img-top" alt="View of alpine lake">
 				  <div class="card-body">
 				    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
 				  </div>				  
