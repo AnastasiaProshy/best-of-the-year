@@ -1,33 +1,35 @@
 	<!DOCTYPE HTML>
 	<html xmlns:th="http://www.thymeleaf.org">
-		<head th:insert="fragments :: head"></head>	
+		<head th:insert="~{fragments :: head}"></head>	
 			<body>
-				<header th:insert="fragments :: header"></header>		
-			<main >				
-				<div class="col-8 mx-auto py-5 text-center">
-					
-					<div class="bg-primary-subtle rounded p-2">
-						<h2 th:text="${title}"></h2>
-					</div>
-					
-					<div class="py-4 bg-light">	
-						<div th:each="oneof: ${element}">
-							
-							<a th:if="${type} == 'movie'" 
-							th:href="@{/movies/{id}(id=${oneof.id})}" 
-							class="list-group-item">
-					            <p th:text="${oneof.title}"></p>
-					        </a>
-							
-					        <a th:if="${type} == 'song'" 
-							th:href="@{/songs/{id}(id=${oneof.id})}" 
-							class="list-group-item">
-					            <p th:text="${oneof.title}"></p>
-					        </a> 
-							
-						</div>					
-					</div>						
-				</div>				
-			</main>	
+				<header th:insert="~{fragments :: header}"></header>		
+				<main >				
+					<div class="col-8 mx-auto py-5 text-center">
+						
+						<div class="bg-primary-subtle rounded p-2">
+							<h2 th:text="${title}"></h2>
+						</div>
+						
+						<div class="py-4 bg-light">	
+							<div th:each="oneof: ${element}">
+								
+								<a th:if="${type} == 'movie'" 
+								th:href="@{/movies/{id}(id=${oneof.id})}" 
+								class="list-group-item">
+						            <p th:text="${oneof.title}"></p>
+						        </a>
+								
+						        <a th:if="${type} == 'song'" 
+								th:href="@{/songs/{id}(id=${oneof.id})}" 
+								class="list-group-item">
+						            <p th:text="${oneof.title}"></p>
+						        </a> 
+								
+							</div>					
+						</div>						
+					</div>				
+				</main>	
+				<footer th:replace="~{fragments :: footer}"></footer>	
+				<th:block th:replace="~{fragments :: scripts}"></th:block>
 		</body>
 	</html>

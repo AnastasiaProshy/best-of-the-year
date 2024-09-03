@@ -1,15 +1,17 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-	<head th:insert="fragments :: head"></head>
+	<head th:insert="~{fragments :: head}"></head>
 		<body>
-			<header th:insert="fragments :: header"></header>		
-		<main class="col-8 mx-auto py-5 text-center">
-			<div class="bg-primary-subtle rounded">
-				<h2 class=" p-3 bg-light"
-				th:text="${title}"></h2>			
-				<p class="p-2"
-				th:text="${name}"></p>
-			</div>
-		</main>
+			<header th:insert="~{fragments :: header}"></header>		
+			<main class="col-8 mx-auto py-5 text-center">
+				<div class="bg-primary-subtle rounded">
+					<h2 class=" p-3 bg-light"
+					th:text="${title}"></h2>			
+					<p class="p-2"
+					th:text="${name}"></p>
+				</div>
+			</main>
+			<footer th:replace="~{fragments :: footer}"></footer>	
+			<th:block th:replace="~{fragments :: scripts}"></th:block>
 	</body>
 </html>

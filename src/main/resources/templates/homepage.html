@@ -1,8 +1,8 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-	<head th:insert="fragments :: head"></head>
+	<head th:insert="~{fragments :: head}"></head>
 	<body>
-		<header th:insert="fragments :: header"></header>		
+		<header th:insert="~{fragments :: header}"></header>		
 		<main class="col-8 mx-auto py-5">
 			<div class="row text-center">				
 				<h1 th:text="'Best of the year by ' + ${name} + '!'"></h1>				
@@ -16,6 +16,8 @@
 				  </div>				  
 				</div>	
 			</div>			
-		</main>		
+		</main>
+		<footer th:replace="~{fragments :: footer}"></footer>	
+		<th:block th:replace="~{fragments :: scripts}"></th:block>
 	</body>
 </html>
